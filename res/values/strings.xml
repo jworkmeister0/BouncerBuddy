@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bouncer Buddy</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="begin">Start Scanning!</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="settings">Settings</string>
+    <string name="pref_minAge">Minimum Age</string>
+    <string name="pref_saveData">Save Data?</string>
+    <string name="pref_saveData_summ">Do You Want To Save ID Data?</string>
+    <string name="pref_saveLength">Save Data Time</string>
+    <string name="pref_mode">Mode</string>
+    <string name="pref_mode_summ">Simple or Complex Mode</string>
+    <string name="simple">Simple</string>
+    <string name="title_activity_simple_results">SimpleResults</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+</resources>
