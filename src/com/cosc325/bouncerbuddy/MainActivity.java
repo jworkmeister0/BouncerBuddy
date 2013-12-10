@@ -13,6 +13,8 @@ import android.view.View;
 public class MainActivity extends Activity {
 	public static final String dbname="db";
 	
+	DatabaseHelper db=new DatabaseHelper(this);
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,10 +49,11 @@ public class MainActivity extends Activity {
 	        // read the data contained in barcode
 	        String barcodeData = data.getStringExtra(BaseBarcodeActivity.EXTRAS_RESULT);
 	        Person person=new Person(barcodeData);
+	        db.addPerson(person);
 	        // ask user what to do with data
 	        Intent intent = new Intent(Intent.ACTION_SEND);
 	        intent.setType("text/plain");
-	        intent.putExtra(Intent.EXTRA_TEXT, barcodeType + ": " + person.toString() );
+	        intent.putExtra(Intent.EXTRA_TEXT, person.toString() );
 	        //CHANGED "UseWith" to "PPUse"
 	        startActivity(Intent.createChooser(intent, getString(R.string.PPUse)));
 	        }

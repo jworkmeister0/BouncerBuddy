@@ -8,14 +8,42 @@ import java.util.Scanner;
 public class Person {
 
 	public String name;
+	//male: 1, female:0
+	public boolean gender;
 	public String city;
 	public String state;
 	public String zip;
 	public String address;
+	public int ID;
 	
 	public Person(String barcodeData) {
 		processData(barcodeData);
 	}
+	
+	public Person(){
+		name=null;
+		city=null;
+		state=null;
+		zip=null;
+		address=null;
+		ID=0;
+	}
+	
+	public void setID(int id){
+		ID=id;
+	}
+	
+	public void setName(String newName){
+		name=newName;
+	}
+	
+	public void setZIP(String newZip){
+		zip=newZip;
+	}
+	
+	public void setState(String newState){
+		name=newState;
+	}	
 
 	/* lines 1-5 (or 0-4) of the barcode data are evil. Kill them */
 	public String processData(String barcodeData) {
@@ -80,4 +108,15 @@ public class Person {
 		return line;
 	}
 	
+	public String getName(){
+		return name;
+	}
+	
+	public String getZIP(){
+		return zip;
+	}
+	
+	public int getID(){
+		return ID;
+	}
 }
