@@ -16,7 +16,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
  
     // Database Name
     private static final String DATABASE_NAME = "db";
- 
     // Persons table name
     private static final String TABLE_PEOPLE = "people";
  
@@ -26,7 +25,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_STATE= "states";
     private static final String KEY_ZIP = "zip";
 
-
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
@@ -35,10 +33,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_PEOPLE + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_ZIP + " TEXT,"
-                + KEY_STATE + " TEXT" + ")";
+        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_PEOPLE + "( "
+                + KEY_ID + " INTEGER PRIMARY KEY ASC," + KEY_NAME + " TEXT, "
+                + KEY_ZIP + " TEXT, "
+                + KEY_STATE + " TEXT " + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
  
@@ -58,22 +56,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
  
     // Adding new person
     void addPerson(Person person) {
+    	System.out.println("ADD PERSON");
         SQLiteDatabase db = this.getWritableDatabase();
  
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, person.getName()); // Person Name
+        values.put(KEY_NAME, person.getName());
+        values.put(KEY_ZIP, person.getZIP());
+        values.put(KEY_STATE, person.getState());
  
         // Inserting Row
         db.insert(TABLE_PEOPLE, null, values);
         db.close(); // Closing database connection
     }
+    
+    Person getPerson(int id) {
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		Cursor cursor = db.query(TABLE_PEOPLE, new String[] { KEY_ID,
+				KEY_NAME, KEY_ZIP }, KEY_ID + "=?",
+				new String[] { String.valueOf(id) }, null, null, null, null);
+		if (cursor != null)
+			cursor.moveToFirst();
+
+		Person person= new Person();
+		person.setName(cursor.getString(1));
+		person.setZIP(cursor.getString(2));
+		// return contact
+		return person;
+	}
  
     
     // Getting All Persons
     public List<Person> getAllPersons() {
         List<Person> personList = new ArrayList<Person>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_PEOPLE;
+        String selectQuery = "SELECT * FROM " + TABLE_PEOPLE;
  
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -88,6 +105,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 person.setState(cursor.getString(3));
                 // Adding person to list
                 personList.add(person);
+                
+                System.out.println("-->DO<--");
             } while (cursor.moveToNext());
         }
  

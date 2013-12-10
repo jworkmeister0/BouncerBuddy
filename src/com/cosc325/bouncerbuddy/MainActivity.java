@@ -1,6 +1,8 @@
 package com.cosc325.bouncerbuddy;
 
 
+import java.util.List;
+
 import net.photopay.base.*;
 import mobi.pdf417.activity.Pdf417ScanActivity;
 import android.os.Bundle;
@@ -12,8 +14,8 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 	public static final String dbname="db";
+	int id=0;
 	
-	DatabaseHelper db=new DatabaseHelper(this);
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,9 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		id++;
+		DatabaseHelper db=new DatabaseHelper(this);
+
 	    super.onActivityResult(requestCode, resultCode, data);
 
 	    if(requestCode==1 && resultCode==BaseBarcodeActivity.RESULT_OK) {
@@ -49,7 +54,18 @@ public class MainActivity extends Activity {
 	        // read the data contained in barcode
 	        String barcodeData = data.getStringExtra(BaseBarcodeActivity.EXTRAS_RESULT);
 	        Person person=new Person(barcodeData);
+	        
+	        System.out.println("Persontostring" +person.toString());
+	        
 	        db.addPerson(person);
+	        //System.out.println(db.getAllPersons().toString());
+	        System.out.println("GET PERSON BELOW");
+	        //System.out.println(db.getPerson(0).toString());
+	        List<Person> personList=db.getAllPersons();
+	        for (Person asdfads: personList) {
+	            System.out.println(person.toString());
+	            System.out.println("-->Loop again<--");
+	        }
 	        // ask user what to do with data
 	        Intent intent = new Intent(Intent.ACTION_SEND);
 	        intent.setType("text/plain");

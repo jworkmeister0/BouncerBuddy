@@ -21,12 +21,7 @@ public class Person {
 	}
 	
 	public Person(){
-		name=null;
-		city=null;
-		state=null;
-		zip=null;
-		address=null;
-		ID=0;
+		
 	}
 	
 	public void setID(int id){
@@ -61,7 +56,7 @@ public class Person {
 			data.readLine();
 			data.readLine();
 
-			name = data.readLine();
+			name = processLine(data.readLine());
 
 			address = data.readLine();
 			city = data.readLine();
@@ -100,7 +95,7 @@ public class Person {
 		name = first + " " + last;
 
 		s.close();
-		return name;
+		return first;
 	}
 
 	public String processLine(String line) {
@@ -115,6 +110,11 @@ public class Person {
 	public String getZIP(){
 		return zip;
 	}
+	
+	public String getState(){
+		return state;
+	}
+	
 	
 	public int getID(){
 		return ID;
