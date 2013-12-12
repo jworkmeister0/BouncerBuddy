@@ -7,7 +7,7 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
-    //use camera	
+    //use camera	
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -17,8 +17,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:persistent="true">
-        //Scanner
+        android:persistent="true"
+        android:theme="@style/AppTheme" >
+        //Scanner
         <activity
             android:name="mobi.pdf417.activity.Pdf417ScanActivity"
             android:label="@string/app_name"
@@ -29,7 +30,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-                //Main
+                //Main
         <activity
             android:name="com.cosc325.bouncerbuddy.MainActivity"
             android:label="@string/app_name" >
@@ -39,7 +40,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        //Settings
+        //Settings
         <activity
             android:name="com.cosc325.bouncerbuddy.SettingsActivity"
             android:label="@string/title_activity_settings" >
@@ -52,6 +53,10 @@
         <activity
             android:name="com.cosc325.bouncerbuddy.SimpleResults"
             android:label="@string/title_activity_simple_results" >
+        </activity>
+        <activity
+            android:name="com.cosc325.bouncerbuddy.ResultsActivity"
+            android:label="@string/title_activity_results" >
         </activity>
     </application>
 

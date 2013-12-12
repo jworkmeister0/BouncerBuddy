@@ -19,8 +19,18 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		int skip;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Intent i=getIntent();
+		skip=i.getIntExtra(DISPLAY_SERVICE, 0);
+		if (skip==1){
+			Intent intent = new Intent(this, Pdf417ScanActivity.class);
+
+			// USE VARIABLE FOR ID (request code=1)
+			startActivityForResult(intent, 1);
+			
+		}
 	}
 
 	@Override
@@ -29,6 +39,7 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
 	
 	public void startScanner(View view){
 		// Intent for Pdf417ScanActivity
@@ -54,24 +65,14 @@ public class MainActivity extends Activity {
 	        // read the data contained in barcode
 	        String barcodeData = data.getStringExtra(BaseBarcodeActivity.EXTRAS_RESULT);
 	        Person person=new Person(barcodeData);
-	        
-	        System.out.println("Persontostring" +person.toString());
-	        
-	        db.addPerson(person);
-	        //System.out.println(db.getAllPersons().toString());
-	        System.out.println("GET PERSON BELOW");
-	        //System.out.println(db.getPerson(0).toString());
-	        List<Person> personList=db.getAllPersons();
-	        for (Person asdfads: personList) {
-	            System.out.println(person.toString());
-	            System.out.println("-->Loop again<--");
-	        }
+	        	     
 	        // ask user what to do with data
-	        Intent intent = new Intent(Intent.ACTION_SEND);
-	        intent.setType("text/plain");
-	        intent.putExtra(Intent.EXTRA_TEXT, person.toString() );
+	        Intent intent = new Intent(this, ResultsActivity.class);
+	        //intent.setType("text/plain");
+	        intent.putExtra("Person",person);
 	        //CHANGED "UseWith" to "PPUse"
-	        startActivity(Intent.createChooser(intent, getString(R.string.PPUse)));
+	        //startActivity(Intent.createChooser(intent, getString(R.string.PPUse)));
+	        startActivity(intent);
 	        }
 	    }
 	}

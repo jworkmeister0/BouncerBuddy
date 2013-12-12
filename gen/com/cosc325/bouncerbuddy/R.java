@@ -162,10 +162,12 @@ containing a value of this type.
         public static final int activity_main=0x7f030000;
         public static final int activity_simple_results=0x7f030001;
         public static final int default_camera_overlay=0x7f030002;
+        public static final int results=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
-        public static final int simple_results=0x7f0c0001;
+        public static final int results=0x7f0c0001;
+        public static final int simple_results=0x7f0c0002;
     }
     public static final class string {
         public static final int Copied=0x7f080010;
@@ -183,7 +185,7 @@ containing a value of this type.
         public static final int dummy_button=0x7f08001f;
         public static final int dummy_content=0x7f080020;
         public static final int hello_world=0x7f080013;
-        public static final int minAge_default=0x7f080028;
+        public static final int minAge_default=0x7f080029;
         public static final int photopay=0x7f080000;
         public static final int photopayCameraNotReady=0x7f08000a;
         public static final int photopayErrorInitializing=0x7f080009;
@@ -193,37 +195,38 @@ containing a value of this type.
         /**  Error stuff UpToDate 
          */
         public static final int photopayWarningTitle=0x7f080005;
-        public static final int pref_default_display_name=0x7f080025;
-        public static final int pref_description_social_recommendations=0x7f080023;
+        public static final int pref_default_display_name=0x7f080026;
+        public static final int pref_description_social_recommendations=0x7f080024;
         /**  Example settings for Data & Sync 
          */
-        public static final int pref_header_data_sync=0x7f080029;
+        public static final int pref_header_data_sync=0x7f08002a;
         /**  Strings related to Settings 
  Example General settings 
          */
-        public static final int pref_header_general=0x7f080021;
+        public static final int pref_header_general=0x7f080022;
         /**  Example settings for Notifications 
          */
-        public static final int pref_header_notifications=0x7f08002c;
+        public static final int pref_header_notifications=0x7f08002d;
         public static final int pref_minAge=0x7f080017;
         public static final int pref_mode=0x7f08001b;
         public static final int pref_mode_summ=0x7f08001c;
-        public static final int pref_ringtone_silent=0x7f08002f;
+        public static final int pref_ringtone_silent=0x7f080030;
         public static final int pref_saveData=0x7f080018;
         public static final int pref_saveData_summ=0x7f080019;
         public static final int pref_saveLength=0x7f08001a;
-        public static final int pref_title_add_friends_to_messages=0x7f080026;
-        public static final int pref_title_display_name=0x7f080024;
-        public static final int pref_title_new_message_notifications=0x7f08002d;
-        public static final int pref_title_ringtone=0x7f08002e;
-        public static final int pref_title_social_recommendations=0x7f080022;
-        public static final int pref_title_sync_frequency=0x7f08002a;
-        public static final int pref_title_system_sync_settings=0x7f08002b;
-        public static final int pref_title_vibrate=0x7f080030;
+        public static final int pref_title_add_friends_to_messages=0x7f080027;
+        public static final int pref_title_display_name=0x7f080025;
+        public static final int pref_title_new_message_notifications=0x7f08002e;
+        public static final int pref_title_ringtone=0x7f08002f;
+        public static final int pref_title_social_recommendations=0x7f080023;
+        public static final int pref_title_sync_frequency=0x7f08002b;
+        public static final int pref_title_system_sync_settings=0x7f08002c;
+        public static final int pref_title_vibrate=0x7f080031;
         public static final int scanBarcode=0x7f080002;
         public static final int settings=0x7f080016;
         public static final int simple=0x7f08001d;
-        public static final int simple_default=0x7f080027;
+        public static final int simple_default=0x7f080028;
+        public static final int title_activity_results=0x7f080021;
         public static final int title_activity_settings=0x7f080015;
         public static final int title_activity_simple_results=0x7f08001e;
     }

@@ -12,7 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
  
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 9001;
  
     // Database Name
     private static final String DATABASE_NAME = "db";
@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Persons Table Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
-    private static final String KEY_STATE= "states";
+    private static final String KEY_AGE= "age";
     private static final String KEY_ZIP = "zip";
 
     public DatabaseHelper(Context context) {
@@ -33,10 +33,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
+    	System.out.println("CREATE DB FUCK THIS SHIT OMG");
+    	
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_PEOPLE + "( "
-                + KEY_ID + " INTEGER PRIMARY KEY ASC," + KEY_NAME + " TEXT, "
-                + KEY_ZIP + " TEXT, "
-                + KEY_STATE + " TEXT " + ")";
+                + KEY_ID + " INTEGER PRIMARY KEY ASC, " + KEY_AGE +  " TEXT, " +
+        		KEY_NAME + " TEXT, "+ KEY_ZIP + " TEXT" + ")";
+        
+        System.out.println("CREATE TABLE " + TABLE_PEOPLE + "( "
+                + KEY_ID + " INTEGER PRIMARY KEY ASC, " + KEY_AGE +  " TEXT, " +
+        		KEY_NAME + " TEXT, "+ KEY_ZIP + " TEXT" + ")");
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
  
@@ -60,9 +65,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
  
         ContentValues values = new ContentValues();
+        values.put(KEY_AGE, person.getAge());
         values.put(KEY_NAME, person.getName());
         values.put(KEY_ZIP, person.getZIP());
-        values.put(KEY_STATE, person.getState());
  
         // Inserting Row
         db.insert(TABLE_PEOPLE, null, values);
@@ -73,12 +78,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		Cursor cursor = db.query(TABLE_PEOPLE, new String[] { KEY_ID,
-				KEY_NAME, KEY_ZIP }, KEY_ID + "=?",
+				KEY_NAME, KEY_ZIP , KEY_AGE}, KEY_ID + "=?",
 				new String[] { String.valueOf(id) }, null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
 
 		Person person= new Person();
+		person.setName(cursor.getString(0));
 		person.setName(cursor.getString(1));
 		person.setZIP(cursor.getString(2));
 		// return contact
@@ -102,7 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 person.setID(Integer.parseInt(cursor.getString(0)));
                 person.setName(cursor.getString(1));
                 person.setZIP(cursor.getString(2));
-                person.setState(cursor.getString(3));
+                person.setAge(cursor.getString(3));
                 // Adding person to list
                 personList.add(person);
                 
